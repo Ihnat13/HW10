@@ -6,10 +6,10 @@ const num = 10;
 const table = document.createElement(`table`);
 function createTable(num, table){
     for(let i = 1; i <= num; i++){
-        let row = document.createElement(`tr`);
+        const row = document.createElement(`tr`);
       
         for(let j = 1; j <= num; j++){ 
-            let cell = document.createElement(`td`);
+            const cell = document.createElement(`td`);
             cell.textContent = i * j;
             row.appendChild(cell) 
         }
