@@ -1,22 +1,36 @@
-// Динамічно створити таблицю множення 10х10 і додати на сторінку. Стилізувати таблицю за власним смаком, додавши таблиці 
-// відповідний клас і стилі в css файлі.
 
-// Ніякого хардкодинга! Розмірність таблиці має бути легко змінити
+
+
 const num = 10;
-const table = document.createElement(`table`);
-function createTable(num, table){
-    for(let i = 1; i <= num; i++){
-        const row = document.createElement(`tr`);
-      
-        for(let j = 1; j <= num; j++){ 
-            const cell = document.createElement(`td`);
-            cell.textContent = i * j;
-            row.appendChild(cell) 
-        }
+const table = document.createElement('table');
 
-        table.appendChild(row)
-    }
+
+const headerRow = document.createElement('tr');
+headerRow.appendChild(createHeaderCell('x')); 
+
+for (let i = 1; i <= num; i++) {
+    headerRow.appendChild(createHeaderCell(i)); 
 }
-document.body.appendChild(table)
-createTable(num, table)
 
+table.appendChild(headerRow);
+
+for (let i = 1; i <= num; i++) {
+    const row = document.createElement('tr');
+    row.appendChild(createHeaderCell(i)); 
+
+    for (let j = 1; j <= num; j++) {
+        const cell = document.createElement('td');
+        cell.textContent = i * j;
+        row.appendChild(cell);
+    }
+
+    table.appendChild(row);
+}
+
+document.body.appendChild(table);
+
+function createHeaderCell(text) {
+    const headerCell = document.createElement('th');
+    headerCell.textContent = text;
+    return headerCell;
+}
